@@ -1,4 +1,4 @@
-package com.example.hw04_gymlog_v300.Database;
+package com.example.hw04_gymlog_v300.database;
 
 import android.content.Context;
 
@@ -6,14 +6,17 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.example.hw04_gymlog_v300.Database.entities.GymLog;
+import com.example.hw04_gymlog_v300.database.entities.GymLog;
+import com.example.hw04_gymlog_v300.database.typeConverters.LocalDateTypeConverter;
 
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+@TypeConverters(LocalDateTypeConverter.class)
 @Database(entities = {GymLog.class}, version = 1, exportSchema = false)
 public abstract class GymLogDatabase extends RoomDatabase {
     public static final String GYM_LOG_TABLE = "gymLogTable";
